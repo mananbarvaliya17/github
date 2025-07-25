@@ -1,0 +1,47 @@
+.Hero-container{
+    width: 100%;
+    height: calc(100vh - 70px);
+   background-color: black;
+    display: flex;
+    align-items: center;
+}
+
+.box-container{
+    width: 50%;
+    height: 90%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 9%;
+    padding: auto;
+    position: relative;
+    left: 2%;
+}
+.circle{
+    width: 140px;
+    height: 140px;
+    background-color: white;
+    border-radius: 50%;
+    position: absolute;
+    top: 41%;
+    left: 42%;
+}
+.box1,
+.box2,
+.box3,
+.box4{
+    width: 45%;
+    height: 45%;
+    background-color: rgba(255, 255, 255, 0.135);
+}
+.box1{
+     border-radius: 10px 10px 45% 10px ;
+}
+.box2{
+     border-radius: 10px 10px 10px 45% ;
+}
+.box3{
+     border-radius: 10px 45% 10px 10px ;
+}
+.box4{
+     border-radius: 45% 10px 10px 10px ;
+}
