@@ -5,33 +5,31 @@ import Footer from '../Component/Footer/Footer'
 const Login = () => {
   return (
     <div>
-      <h1>Login page</h1>
-      <div className='foem-data'>
-
         <form>
+      <div className='form-data'>
           <input
             type="text"
-            placeholder="F name:"
+            placeholder="F name :-"
             name="firstName"
           />
           <input
             type="text"
-            placeholder="L name:"
+            placeholder="L name :-"
             name="lastName"
           />
           <input
             type="password"
-            placeholder="Password:"
+            placeholder="Password :-"
             name="password"
           />
           <input
             type="password"
-            placeholder="Confirm Password:"
+            placeholder="Confirm Password :-"
             name="confirmPassword"
           />
           <button>Submitte</button>
-        </form>
       </div>
+        </form>
 
       <Footer />
 

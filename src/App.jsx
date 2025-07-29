@@ -56,10 +56,10 @@ function App() {
         <h1>Helow </h1>
 
         <div className='Nav-tabs'>
-          <Link to='/' style={{ textDecoration: 'none', color: 'black' }}>Go to home</Link>
-          <Link to='/Collection' style={{ textDecoration: 'none', color: 'black' }}>go to Collection</Link>
-          <Link to='/Contectus' style={{ textDecoration: 'none', color: 'black' }}>Go to contectus</Link>
-          <Link to='/Login' style={{ textDecoration: 'none', color: 'black' }}>go to Loginpage</Link>
+          <Link to='/' style={{ textDecoration: 'none', color: 'black' }}><h4>Home</h4></Link>
+          <Link to='/Collection' style={{ textDecoration: 'none', color: 'black' }}><h4>Collection</h4></Link>
+          <Link to='/Contectus' style={{ textDecoration: 'none', color: 'black' }}><h4>Contectus</h4></Link>
+          <Link to='/Login' style={{ textDecoration: 'none', color: 'black' }}><h4>Login</h4></Link>
         </div>
       </div>
 

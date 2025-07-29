@@ -35,7 +35,7 @@ const Product = () => {
             <p>product price :- {product.price}</p>
             <div className='card-button'>
               <button onClick={() => { setAdd(Add + 1) }}>Add</button>
-              <button onClick={() => { setAdd(Add - 1) }}>Delete</button>
+              <button onClick={() => { Add > 0 ? setAdd(Add - 1) : setAdd(0) }}>Delete</button>
             </div>
           </div>
         ))}
