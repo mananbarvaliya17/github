@@ -1,105 +1,115 @@
-import React, { useEffect } from 'react'
-import './Choice.css'
-import axios from 'axios'
+// import React, { useEffect, useState } from 'react'
+// import './Choice.css'
+// import axios from 'axios'
+// import { useParams } from 'react-router-dom';
 
+// const Choice = () => {
+
+//     const { id } = useParams();
+//     const [products, setProducts] = useState([]);
+//     // const [Data, setData] = useState([])
+//     useEffect(() => {
+
+//         const fetchData = async () => {
+//             try {
+//                 const response = await axios.get('https://dummyjson.com/products');
+//                 setProducts(response.data.products);
+//             } catch (error) {
+//                 console.error('Error  products:', error);
+//             }
+//         };
+
+//         fetchData();
+//     }, []);
+
+//     return (
+//         <div>
+//             <h1>Selected Product ID: {id}</h1>
+//             <div className='Choice-box' >
+//                 <div className='data-box'>
+
+//                     <div className='img-box' >
+//                         <img src={product.thumbnail}/>
+//                     </div>
+
+//                     <div className='img-choice'>
+//                         <div className='img-circle'>
+//                             <img src={product.images}/>
+//                         </div>
+//                     </div>
+
+//                 </div>
+
+//                 <div className='data-print'>
+//                     <h1>Product name :-</h1>
+//                     <p>Price :-</p>
+//                     <p>Rating :-</p>
+//                     <p>Catagery :-</p>
+//                     <p>Stock :-</p>
+//                 </div>
+//             </div>
+//         </div>
+//     )
+// }
+
+// export default Choice
+
+import React, { useEffect, useState } from 'react';
+import './Choice.css';
+import axios from 'axios';
+import { useParams } from 'react-router-dom';
 
 const Choice = () => {
+    const { id } = useParams(); 
+    const [product, setProduct] = useState(); 
+    const [error, setError] = useState();
 
-    // const [DataValue, setDataValue] = useState([]);
+    useEffect(() => {
+        const fetchProduct = async () => {
+            try {
+                const response = await axios.get(`https://dummyjson.com/products/${id}`);
+                setProduct(response.data);
+            } catch (err) {
+                setError('Failed to fetch product data');
+                console.error('Error:', err);
+            }
+        };
 
-    // console.log(DataValue);
+        fetchProduct();
+    }, [id]);
 
-    // useEffect(() => {
-
-    //     const data = async () => {
-    //         try {
-    //             const ProductData = await axios.get('https://dummyjson.com/products');
-    //             setDataValue(ProductData.data.products);
-    //         } catch (error) {
-    //             console.log("show error to = ", error);
-    //         }
-    //     }
-        // data();
-    // }, []);
+    if (!product) return 
 
     return (
         <div>
-            {/* {ProductData.map((i) => { */}
-                <div className='Choice-box' >
-                    <div className='data-box'>
-
-                        <div className='img-box' >
-                            {/* <img src={DataValue.thumbnail} /> */}
-                        </div>
-
-                        <div className='img-choice'>
-                            <div className='img-circle'>
-                                {/* <img src={DataValue.images} /> */}
-                            </div>
-                        </div>
-
+            <div className='Choice-box'>
+                <div className='data-box'>
+                    <div className='img-box'>
+                        <img src={product.thumbnail} alt={product.title} />
                     </div>
 
-                    <div className='data-box'>
-
+                    <div className='img-choice'>
+                        {product.images.slice(0, 4).map((img, index) => (
+                            <div className='img-circle' key={index}>
+                                <img src={img} />
+                            </div>
+                        ))}
                     </div>
                 </div>
-            {/* })} */}
+
+                <div className='data-print'>
+                    <h1>Product Name: {product.title}</h1>
+                    <p>Price: ${product.price}</p>
+                    <p>Rating: {product.rating}</p>
+                    <p>Category: {product.category}</p>
+                    <p>Stock: {product.stock}</p>
+                    <p>Product id : {id}</p>
+                    <button>Shop now</button>
+                </div>
+            </div>
         </div>
-    )
-}
+    );
+};
 
-export default Choice
+export default Choice;
 
-
-// import React, { useEffect, useState } from 'react';
-// import './Choice.css';
-// import axios from 'axios';
-
-// const Choice = () => {
-//   const [DataValue, setDataValue] = useState([]);
-//   const [indexToShow, setIndexToShow] = useState(0);
-
-//   useEffect(() => {
-//     const fetchData = async () => {
-//       try {
-//         const ProductData = await axios.get('https://dummyjson.com/products');
-//         setDataValue(ProductData.data.products);
-//       } catch (error) {
-//         console.log("Error fetching data:", error);
-//       }
-//     };
-//     fetchData();
-//   }, []);
-
-//   const handleToggle = () => {
-//     setIndexToShow(prev => (prev === 0 ? 1 : 0));
-//   };
-
-//   return (
-//     <div>
-//       <button onClick={handleToggle}>Toggle Product</button>
-
-//       {DataValue.length > indexToShow && (
-//         <div className='Choice-box' key={DataValue[indexToShow].id}>
-//           <div className='data-box'>
-//             <div className='img-box'>
-//               <img src={DataValue[indexToShow].thumbnail} alt="thumbnail" />
-//             </div>
-
-//             <div className='img-choice'>
-//               {DataValue[indexToShow].images.slice(0, 5).map((img, i) => (
-//                 <div className='img-circle' key={i}>
-//                   <img src={img} alt={`img-${i}`} />
-//                 </div>
-//               ))}
-//             </div>
-//           </div>
-//         </div>
-//       )}
-//     </div>
-//   );
-// };
-
-// export default Choice;
-    

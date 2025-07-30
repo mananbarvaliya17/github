@@ -10,8 +10,8 @@ const Hompage = () => {
     <div>
       <Hero />
       <Blog />
-      <Choice />
       <Product />
+      <Choice />
       <Footer />
     </div>
   )

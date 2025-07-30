@@ -1,11 +1,16 @@
 import React from 'react'
 import Footer from '../Component/Footer/Footer'
+import Choice from '../Component/Choice/Choice'
+import Cart from '../Component/Cart/Cart'
 
 const Collection = () => {
   return (
     <div>
-        <h1>Collection page</h1>
+        
+        <Choice />
+        <Cart />
         <Footer />
+
 
     </div>
   )
